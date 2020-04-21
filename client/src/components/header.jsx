@@ -34,12 +34,7 @@ export default () => {
       <StyledNavigationList $align={ALIGN.right}>
         <StyledNavigationItem>
           <StyledLink href="#basic-link1">
-            Tab Link One
-          </StyledLink>
-        </StyledNavigationItem>
-        <StyledNavigationItem>
-          <StyledLink href="#basic-link2">
-            Tab Link Two
+            Documentation
           </StyledLink>
         </StyledNavigationItem>
       </StyledNavigationList>

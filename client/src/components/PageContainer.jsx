@@ -1,7 +1,7 @@
 import React from 'react';
 import {styled} from 'baseui';
 
-import Header from './header';
+import Header from './Header';
 
 const Container = styled('div',{
   margin: '40px',

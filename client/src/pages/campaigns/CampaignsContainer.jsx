@@ -1,9 +1,10 @@
 import React from 'react';
-import get from 'lodash/get';
 
 import { useQuery } from "@apollo/react-hooks";
 
-import {GET_CAMPAIGNS} from '../../gql/queries';
+import { GET_CAMPAIGNS } from '../../gql/queries';
+
+import CompaignsTable from './compaignsTable/CompaignsTable';
 
 const CampaignsContainer = () => {
   const { data, loading, error } = useQuery(GET_CAMPAIGNS);
@@ -15,13 +16,7 @@ const CampaignsContainer = () => {
 
   return (
     <>
-      {
-        get(data, 'campaigns', []).map(campaign => {
-          return (
-            <p key={campaign.id}>{JSON.stringify(campaign)}</p>
-          )
-        })
-      }
+      <CompaignsTable />
     </>
   )
 };

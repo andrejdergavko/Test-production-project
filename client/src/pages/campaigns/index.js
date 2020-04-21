@@ -1,1 +1,1 @@
-export { default } from './campaigns-container';
+export { default } from './CampaignsContainer';

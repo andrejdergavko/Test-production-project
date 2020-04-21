@@ -1,13 +1,10 @@
 import React from 'react';
-import { Router } from '@reach/router';
-
+import { Route } from 'react-router-dom';
 import CampaignsContainer from './campaigns';
-import PageContainer from '../components/page-container';
+import PageContainer from '../components/PageContainer';
 
 export default () => (
   <PageContainer>
-    <Router primary={false}>
-      <CampaignsContainer path="/" />
-    </Router>
+    <Route path='/' component={CampaignsContainer} />
   </PageContainer>
 );
