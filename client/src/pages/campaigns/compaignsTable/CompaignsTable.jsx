@@ -2,35 +2,38 @@ import React from 'react';
 import { Table } from "baseui/table-semantic";
 
 
-function CompaignsTable(props) {
+function CompaignsTable({data}) {
   return (
     <Table
-      columns={["Name", "Age", "Address"]}
-      data={[
-        [
-          "Sarah Brown",
-          31,
-          "100 Broadway St., New York City, New York"
-        ],
-        [
-          "Jane Smith",
-          32,
-          "100 Market St., San Francisco, California"
-        ]
-      ]}
+      columns={["Campaign name", "Channels", "Created At", "Clicks", "Views", "Created By", "Status"]}
+      data={data}
       overrides={{
-        TableBodyRow: {
-          style: () => {
-            return {
-              outline: "#eee solid 1px",
-              backgroundColor: "#fff"
-            };
+        Root: {
+          style: ({ $theme }) => {
+            return { border: "#f6f6f6 solid 2px" };
           }
         },
         TableHeadCell: {
           style: ({ $theme }) => {
             return {
-              outline: `#fff solid 1px`,
+              backgroundColor: "#f6f6f6",
+              "::before": { borderLeftStyle: "none" },
+              "::after": { backgroundImage: "none" }
+            };
+          }
+        },
+        TableBodyRow: {
+          style: ({ $theme }) => {
+            return {
+              outline: "#f6f6f6 solid 1px",
+              backgroundColor: "#fff",
+            };
+          }
+        },
+        TableBodyCell: {
+          style: ({ $theme }) => {
+            return {
+              verticalAlign: "middle"
             };
           }
         }
