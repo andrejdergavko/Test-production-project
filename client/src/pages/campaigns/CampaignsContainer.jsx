@@ -2,11 +2,10 @@ import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { GET_CAMPAIGNS } from "../../gql/queries";
 
-import CompaignsTable from "./compaignsTable";
-import CompleteTag from "./compaignsTable/completeTag";
-import CreationDate from "./compaignsTable/creationDate";
-import Channels from "./compaignsTable/channels";
-import { numberWithSeparator } from "../../utils/utils";
+import CampaignsTable from "./campaignsTable";
+import CompleteTag from "./campaignsTable/completeTag";
+import Channels from "./campaignsTable/channels";
+import { numberWithSeparator, convertTimestampToDate } from "../../utils/utils";
 
 const CampaignsContainer = () => {
   const { data, loading, error } = useQuery(GET_CAMPAIGNS);
@@ -26,24 +25,18 @@ const CampaignsContainer = () => {
       isActive,
     } = campaign;
 
-    const rowData = [
+    return [
       name,
       <Channels channels={channels} />,
-      <CreationDate date={createdAt} />,
-      numberWithSeparator(clicks, ','),
-      numberWithSeparator(views, ','),
+      convertTimestampToDate(+createdAt, "/"),
+      numberWithSeparator(clicks, ","),
+      numberWithSeparator(views, ","),
       author,
       <CompleteTag isActive={isActive} />,
     ];
-
-    return rowData;
   });
 
-  return (
-    <div>
-      <CompaignsTable data={dataForTable} />
-    </div>
-  );
+  return <CampaignsTable data={dataForTable} />;
 };
 
 export default CampaignsContainer;

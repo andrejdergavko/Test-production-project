@@ -1,45 +1,54 @@
-import React from 'react';
+import React from "react";
 import { Table } from "baseui/table-semantic";
 
+const COLUMNS = [
+  "Campaign name",
+  "Channels",
+  "Created At",
+  "Clicks",
+  "Views",
+  "Created By",
+  "Status",
+];
 
-function CompaignsTable({data}) {
+function CampaignsTable({ data }) {
   return (
     <Table
-      columns={["Campaign name", "Channels", "Created At", "Clicks", "Views", "Created By", "Status"]}
+      columns={COLUMNS}
       data={data}
       overrides={{
         Root: {
-          style: ({ $theme }) => {
+          style: () => {
             return { border: "#f6f6f6 solid 2px" };
-          }
+          },
         },
         TableHeadCell: {
-          style: ({ $theme }) => {
+          style: () => {
             return {
               backgroundColor: "#f6f6f6",
               "::before": { borderLeftStyle: "none" },
-              "::after": { backgroundImage: "none" }
+              "::after": { backgroundImage: "none" },
             };
-          }
+          },
         },
         TableBodyRow: {
-          style: ({ $theme }) => {
+          style: () => {
             return {
               outline: "#f6f6f6 solid 1px",
               backgroundColor: "#fff",
             };
-          }
+          },
         },
         TableBodyCell: {
-          style: ({ $theme }) => {
+          style: () => {
             return {
-              verticalAlign: "middle"
+              verticalAlign: "middle",
             };
-          }
-        }
+          },
+        },
       }}
     />
   );
 }
 
-export default CompaignsTable;
+export default CampaignsTable;

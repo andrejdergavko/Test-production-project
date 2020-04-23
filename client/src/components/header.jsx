@@ -23,6 +23,7 @@ export default () => {
             paddingRight: '0',
             paddingBottom: '0',
             paddingLeft: '0',
+            zIndex: '1000'
           }
         }
       }}
