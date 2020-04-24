@@ -5,6 +5,7 @@ import { GET_CAMPAIGNS } from "../../gql/queries";
 import CampaignsTable from "./campaignsTable";
 import CompleteTag from "./campaignsTable/completeTag";
 import Channels from "./campaignsTable/channels";
+import Popover from "./campaignsTable/popover";
 import { numberWithSeparator, convertTimestampToDate } from "../../utils/utils";
 
 const CampaignsContainer = () => {
@@ -33,6 +34,7 @@ const CampaignsContainer = () => {
       numberWithSeparator(views, ","),
       author,
       <CompleteTag isActive={isActive} />,
+      <Popover />,
     ];
   });
 

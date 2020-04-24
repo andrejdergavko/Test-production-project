@@ -9,6 +9,7 @@ const COLUMNS = [
   "Views",
   "Created By",
   "Status",
+  ""
 ];
 
 function CampaignsTable({ data }) {
