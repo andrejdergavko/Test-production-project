@@ -11,6 +11,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Pages from "./pages";
 
+import './style.css'
+
 const engine = new Styletron();
 
 const cache = new InMemoryCache();
@@ -29,7 +31,7 @@ ReactDOM.render(
       <StyletronProvider value={engine}>
         <BaseProvider
           theme={LightTheme}
-          overrides={{ AppContainer: { style: { height: '100%', margin: '-8px' } } }}
+          overrides={{ AppContainer: { style: { height: '100vh' } } }}
         >
           <Pages />
         </BaseProvider>
