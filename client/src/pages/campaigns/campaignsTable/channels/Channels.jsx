@@ -1,11 +1,7 @@
 import React from "react";
 import { useStyletron } from "baseui";
 
-const iconURLs = {
-  EMAIL: "https://img.icons8.com/material/24/000000/important-mail.png",
-  SMS:
-    "https://img.icons8.com/material-rounded/24/000000/comment-discussion.png",
-};
+import { channels as channelsData } from "../../../../constants";
 
 function Channels({ channels }) {
   const [css] = useStyletron();
@@ -23,14 +19,11 @@ function Channels({ channels }) {
   });
 
   const icons = channels.map((channel) => {
-    return (
-      <img
-        key={channel.name}
-        className={icon}
-        src={iconURLs[channel.name]}
-        alt={channel.name}
-      />
+    const { id, label, iconURL } = channelsData.find(
+      (item) => item.id === channel.name
     );
+
+    return <img key={id} className={icon} src={iconURL} alt={label} />;
   });
 
   return <div className={iconWrapper}>{icons}</div>;

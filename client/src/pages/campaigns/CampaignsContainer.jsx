@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { GET_CAMPAIGNS } from "../../gql/queries";
 
+import FilterPanel from "./filterPanel";
 import CampaignsTable from "./campaignsTable";
 import CompleteTag from "./campaignsTable/completeTag";
 import Channels from "./campaignsTable/channels";
@@ -38,7 +39,12 @@ const CampaignsContainer = () => {
     ];
   });
 
-  return <CampaignsTable data={dataForTable} />;
+  return (
+    <>
+      <FilterPanel />
+      <CampaignsTable data={dataForTable} />
+    </>
+  );
 };
 
 export default CampaignsContainer;

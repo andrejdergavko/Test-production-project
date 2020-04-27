@@ -4,7 +4,7 @@ import {styled} from 'baseui';
 import Header from './Header';
 
 const Container = styled('div',{
-  margin: '40px',
+  margin: '20px',
 });
 
 export default ({children}) => (
