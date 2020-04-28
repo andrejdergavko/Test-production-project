@@ -5,20 +5,24 @@ export default {
       inputFill: "#eee",
       inputPlaceholder: "#000",
       contentPrimary: "#000",
+      buttonPrimaryFill: "#eee",
+      buttonPrimaryText: "#000",
+      buttonPrimaryHover: "#ddd",
     },
   },
   button: {
     BaseButton: {
-      style: ({ $theme }) => {
+      style: ({ $isSelected }) => {
         return {
           padding: "10px 25px",
+          backgroundColor: $isSelected ? "#000" : "#eee",
         };
       },
     },
   },
   select: {
     Root: {
-      style: ({ $theme }) => {
+      style: () => {
         return {
           display: "inline-block",
           width: "auto",
@@ -27,21 +31,43 @@ export default {
       },
     },
     ControlContainer: {
-      style: ({ $theme }) => {
-        return { borderRadius: "50px" };
+      style: ({ $isEmpty }) => {
+        return {
+          borderRadius: "50px",
+          backgroundColor: $isEmpty ? "#eee" : "#000",
+        };
       },
     },
     Placeholder: {
-      style: ({ $theme }) => {
+      style: () => {
         return {
           fontWeight: "500",
         };
       },
     },
+    ValueContainer: {
+      style: ({ $isEmpty }) => {
+        return { color: $isEmpty ? "#000" : "#fff" };
+      },
+    },
     IconsContainer: {
-      style: ({ $theme }) => {
+      style: () => {
         return {
           marginLeft: "10px",
+        };
+      },
+    },
+    ClearIcon: {
+      style: ({ $isEmpty }) => {
+        return {
+          color: $isEmpty ? "#000" : "#fff",
+        };
+      },
+    },
+    SelectArrow: {
+      style: ({ $isEmpty }) => {
+        return {
+          color: $isEmpty ? "#000" : "#fff",
         };
       },
     },

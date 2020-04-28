@@ -12,18 +12,46 @@ function FilterPanel(props) {
   const [status, setStatus] = useState([]);
 
   const [css] = useStyletron();
-
+  
   const form = css({
     marginBottom: "20px",
   });
+
+  const refetchData = () => {
+    console.log('refetch')
+    const selectedChannels = channel.map((item) => {
+      return item.id;
+    });
+    const selectedStatus = status.map((item) => {
+      return item.id;
+    });
+    console.log(selectedStatus);
+
+    props.refetch({
+      filter: [
+        {
+          field: "channels",
+          values: selectedChannels,
+        },
+        {
+          field: "isActive",
+          values: selectedStatus,
+        },
+      ],
+    });
+  };
 
   return (
     <form className={form}>
       <ThemeProvider theme={createTheme(lightThemePrimitives, overrides.theme)}>
         <Button
-          // onClick={() => alert("click")}
+          onClick={(event) => {
+            event.preventDefault();
+            refetchData();
+          }}
           size={SIZE.compact}
           shape={SHAPE.pill}
+          isSelected={channel[0] || status[0] ? false : true}
           overrides={overrides.button}
         >
           All
@@ -33,8 +61,12 @@ function FilterPanel(props) {
           options={channels}
           value={channel}
           placeholder="Channel"
-          onChange={(params) => setChannel(params.value)}
+          onChange={(params) => {
+            setChannel(params.value);
+            // refetchData();
+          }}
           size={SIZE.compact}
+          multi={true}
           overrides={overrides.select}
         />
 
