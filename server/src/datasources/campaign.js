@@ -1,6 +1,6 @@
-const { v4 } = require('uuid');
+const { v4 } = require("uuid");
 
-const data = require('./data');
+const data = require("./data");
 
 const prepareNewCmapaign = (name) => ({
   id: v4(),
@@ -10,7 +10,7 @@ const prepareNewCmapaign = (name) => ({
   isActive: false,
   createdAt: new Date().getTime().toString(),
   channels: [],
-  author: 'Serj',
+  author: "Serj",
 });
 
 class CampaignAPI {
@@ -20,7 +20,28 @@ class CampaignAPI {
   }
 
   getCampaignById({ id }) {
-    const [ response ] = data.filter(campaign => campaign.id == id);
+    const [response] = data.filter((campaign) => campaign.id == id);
+    return response;
+  }
+
+  getCampaignByFilter({ filter }) {
+    if (filter == undefined) {
+      return data;
+    }
+
+    const response = data.filter((campaign) => {
+      return filter.every((element) => {
+        const { field, values } = element;
+
+        if (field === "channels") {
+          return campaign.channels.some((item) => {
+            return values.includes(item.name);
+          });
+        } else {
+          return values.includes(String(campaign[field]));
+        }
+      });
+    });
     return response;
   }
 
@@ -29,7 +50,7 @@ class CampaignAPI {
     data.push(newCampaign);
 
     return {
-      campaigns: data
+      campaigns: data,
     };
   }
 }

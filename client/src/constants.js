@@ -14,11 +14,11 @@ export const channels = [
 
 export const statuses = [
   {
-    id: 'Active',
+    id: 'true',
     label: 'Active'
   },
   {
-    id: 'Inactive',
+    id: 'false',
     label: 'Inactive'
   },
 ]
