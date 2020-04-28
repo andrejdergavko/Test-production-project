@@ -5,6 +5,7 @@ import PageContainer from '../components/PageContainer';
 
 export default () => (
   <PageContainer>
-    <Route path='/' component={CampaignsContainer} />
+    <Route path='/' exact component={CampaignsContainer} />
+    <Route path='/campaigns' render={() => <h4>Campaigns page</h4>} />
   </PageContainer>
 );

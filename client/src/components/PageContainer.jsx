@@ -1,58 +1,33 @@
 import React from "react";
-import { FlexGrid, FlexGridItem } from "baseui/flex-grid";
 
 import Header from "./Header";
-import Sidebar from "./Sidebar";
-
-const headerProps = {
-  overrides: {
-    Block: {
-      style: () => ({
-        width: "100%",
-        flexGrow: 0,
-      }),
-    },
-  },
-};
-
-const sidebarProps = {
-  overrides: {
-    Block: {
-      style: () => ({
-        width: "100px",
-        flexGrow: 0,
-      }),
-    },
-  },
-};
+import Sidebar from "./sidebar";
+import { useStyletron } from "styletron-react";
 
 export default ({ children }) => {
+  const [css] = useStyletron();
+
+  const pageContainer = css({
+    display: "flex",
+    height: "100vh",
+    flexDirection: "column",
+  });
+
+  const wrapper = css({
+    display: "flex",
+    flexGrow: "1",
+  });
+
+  const main = css({
+    flexGrow: "1",
+  });
+
   return (
-    // <FlexGrid
-    //   flexGridColumnCount={2}
-    //   flexGridColumnGap={0}
-    //   flexGridRowGap={0}
-    //   marginBottom={0}
-    // >
-    //   <FlexGridItem {...headerProps}>
-    //     <Header />
-    //   </FlexGridItem>
-
-    //   <FlexGridItem display="none" />
-
-    //   <FlexGridItem {...sidebarProps}>
-    //     <Sidebar />
-    //   </FlexGridItem>
-
-    //   <FlexGridItem>{children}</FlexGridItem>
-    // </FlexGrid>
-
-    <div>
+    <div className={pageContainer}>
       <Header />
-
-      <div>
-        <div style={{display: 'inline-block'}}><Sidebar /></div>
-        <div style={{display: 'inline-block'}}>{children}</div>
+      <div className={wrapper}>
+        <Sidebar />
+        <div className={main}>{children}</div>
       </div>
     </div>
   );
