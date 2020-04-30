@@ -4,13 +4,13 @@ import { Button, SIZE, SHAPE } from "baseui/button";
 import { Select } from "baseui/select";
 import { ThemeProvider, createTheme, lightThemePrimitives } from "baseui";
 
-import { channels, statuses } from "../../../constants";
+import { CHANNELS, STATUSES } from "../../../constants";
 import overrides from "./overrides";
 
 function FilterPanel({ refetch }) {
   const [channel, setChannel] = useState([]);
   const [status, setStatus] = useState([]);
-  console.log(channel);
+
   useEffect(() => {
     refetch({
       filter: getFilter(),
@@ -18,41 +18,30 @@ function FilterPanel({ refetch }) {
   }, [channel, status]);
 
   const getFilter = () => {
-    if (!channel.length && !status.length) return;
+    const selectedChannels = channel.map((item) => {
+      return item.id;
+    });
+    const selectedStatus = status.map((item) => {
+      return item.id;
+    });
 
-    // const selectedChannels = channel.map((item) => {
-    //   return item.id;
-    // });
-    // const selectedStatus = status.map((item) => {
-    //   return item.id;
-    // });
-    // return [
-    //   {
-    //     field: "channels",
-    //     values: selectedChannels,
-    //   },
-    //   {
-    //     field: "isActive",
-    //     values: selectedStatus,
-    //   },
-    // ];
-    // return [channel, status].reduce((acc, item) => {
-    //   if (item.length === 0) {
-    //     return acc;
-    //   }
-
-    //   const condition = {
-    //     field: item.,
-    //     values: selectedChannels,
-    //   };
-    //   return [...acc];
-    // }, []);
+    return [
+      {
+        field: "channels",
+        values: selectedChannels,
+      },
+      {
+        field: "isActive",
+        values: selectedStatus,
+      },
+    ];
   };
 
   const [css] = useStyletron();
 
   const form = css({
     marginBottom: "20px",
+    display: "flex",
   });
 
   return (
@@ -73,7 +62,7 @@ function FilterPanel({ refetch }) {
         </Button>
 
         <Select
-          options={channels}
+          options={CHANNELS}
           value={channel}
           placeholder="Channel"
           onChange={(params) => {
@@ -81,15 +70,18 @@ function FilterPanel({ refetch }) {
           }}
           size={SIZE.compact}
           multi={true}
+          searchable={false}
+          clearable={false}
           overrides={overrides.select}
         />
 
         <Select
-          options={statuses}
+          options={STATUSES}
           value={status}
           placeholder="Status"
           onChange={(params) => setStatus(params.value)}
           size={SIZE.compact}
+          searchable={false}
           overrides={overrides.select}
         />
       </ThemeProvider>

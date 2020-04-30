@@ -25,13 +25,13 @@ class CampaignAPI {
   }
 
   getCampaignByFilter({ filter }) {
-    if (filter == undefined) {
-      return data;
-    }
-
     const response = data.filter((campaign) => {
       return filter.every((element) => {
         const { field, values } = element;
+
+        if (values.length === 0) {
+          return true;
+        }
 
         if (field === "channels") {
           return campaign.channels.some((item) => {

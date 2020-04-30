@@ -1,4 +1,4 @@
-export const channels = [
+export const CHANNELS = [
   {
     id: "EMAIL",
     label: "Email",
@@ -12,13 +12,13 @@ export const channels = [
   },
 ];
 
-export const statuses = [
+export const STATUSES = [
   {
-    id: 'true',
-    label: 'Active'
+    id: "true",
+    label: "Active",
   },
   {
-    id: 'false',
-    label: 'Inactive'
+    id: "false",
+    label: "Inactive",
   },
-]
+];

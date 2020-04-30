@@ -1,6 +1,7 @@
 export default {
   theme: {
     colors: {
+      borderFocus: "#eee",
       inputBorder: "#eee",
       inputFill: "#eee",
       inputPlaceholder: "#000",
@@ -14,8 +15,10 @@ export default {
     BaseButton: {
       style: ({ $isSelected }) => {
         return {
-          padding: "10px 25px",
+          paddingRight: "25px",
+          paddingLeft: "25px",
           backgroundColor: $isSelected ? "#000" : "#eee",
+          transition: "background-color 0s",
         };
       },
     },
@@ -34,7 +37,9 @@ export default {
       style: ({ $isEmpty }) => {
         return {
           borderRadius: "50px",
+          borderColor: $isEmpty ? "#eee" : "#000",
           backgroundColor: $isEmpty ? "#eee" : "#000",
+          transition: "background-color 0s",
         };
       },
     },

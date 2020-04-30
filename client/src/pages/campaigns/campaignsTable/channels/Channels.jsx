@@ -1,7 +1,7 @@
 import React from "react";
 import { useStyletron } from "baseui";
 
-import { channels as channelsData } from "../../../../constants";
+import { CHANNELS } from "../../../../constants";
 
 function Channels({ channels }) {
   const [css] = useStyletron();
@@ -19,7 +19,7 @@ function Channels({ channels }) {
   });
 
   const icons = channels.map((channel) => {
-    const { id, label, iconURL } = channelsData.find(
+    const { id, label, iconURL } = CHANNELS.find(
       (item) => item.id === channel.name
     );
 
