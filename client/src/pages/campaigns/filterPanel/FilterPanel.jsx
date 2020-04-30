@@ -38,7 +38,7 @@ function FilterPanel({ refetch }) {
   };
 
   const [css] = useStyletron();
-
+  
   const form = css({
     marginBottom: "20px",
     display: "flex",
