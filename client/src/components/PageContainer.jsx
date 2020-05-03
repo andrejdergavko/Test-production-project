@@ -1,15 +1,34 @@
-import React from 'react';
-import {styled} from 'baseui';
+import React from "react";
 
-import Header from './Header';
+import Header from "./Header";
+import Sidebar from "./sidebar";
+import { useStyletron } from "styletron-react";
 
-const Container = styled('div',{
-  margin: '40px',
-});
+export default ({ children }) => {
+  const [css] = useStyletron();
 
-export default ({children}) => (
-  <div>
-    <Header />
-    <Container>{children}</Container>
-  </div>
-);
+  const pageContainer = css({
+    display: "flex",
+    height: "100vh",
+    flexDirection: "column",
+  });
+
+  const wrapper = css({
+    display: "flex",
+    flexGrow: "1",
+  });
+
+  const main = css({
+    flexGrow: "1",
+  });
+
+  return (
+    <div className={pageContainer}>
+      <Header />
+      <div className={wrapper}>
+        <Sidebar />
+        <div className={main}>{children}</div>
+      </div>
+    </div>
+  );
+};
