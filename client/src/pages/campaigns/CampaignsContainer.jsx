@@ -1,7 +1,9 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { GET_CAMPAIGNS } from "../../gql/queries";
+import { GET_CAMPAIGNS_BY_FILTER } from "../../gql/queries";
+import _ from 'lodash';
 
+import FilterPanel from "./filterPanel";
 import CampaignsTable from "./campaignsTable";
 import CompleteTag from "./campaignsTable/completeTag";
 import Channels from "./campaignsTable/channels";
@@ -9,13 +11,12 @@ import Popover from "./campaignsTable/popover";
 import { numberWithSeparator, convertTimestampToDate } from "../../utils/utils";
 
 const CampaignsContainer = () => {
-  const { data, loading, error } = useQuery(GET_CAMPAIGNS);
+  const { data, loading, error, refetch } = useQuery(GET_CAMPAIGNS_BY_FILTER);
 
-  if (loading) return <p>Loading.. </p>;
   if (error) return <p>ERROR</p>;
   if (!data) return <p>Not found</p>;
 
-  const dataForTable = data.campaigns.map((campaign) => {
+  const dataForTable = _.get(data, "campaignByFilter", []).map((campaign) => {
     const {
       name,
       channels,
@@ -38,7 +39,12 @@ const CampaignsContainer = () => {
     ];
   });
 
-  return <CampaignsTable data={dataForTable} />;
+  return (
+    <>
+      <FilterPanel refetch={refetch} />
+      <CampaignsTable loading={loading} data={dataForTable} />
+    </>
+  );
 };
 
 export default CampaignsContainer;
