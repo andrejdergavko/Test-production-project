@@ -9,10 +9,12 @@ const COLUMNS = [
   "Views",
   "Created By",
   "Status",
-  ""
+  "",
 ];
 
-function CampaignsTable({ data }) {
+function CampaignsTable({ data, loading }) {
+  if (loading) return <p>Loading.. </p>;
+
   return (
     <Table
       columns={COLUMNS}

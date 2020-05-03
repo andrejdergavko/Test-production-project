@@ -5,6 +5,7 @@ const typeDefs = gql`
   type Query {
     campaigns: [Campaign]!
     campaign(id: String!): Campaign
+    campaignByFilter(filter: [CampaignsFilter]): [Campaign]!
   }
 
   type Mutation {
@@ -13,6 +14,11 @@ const typeDefs = gql`
 
   type CampaignCreateResponse {
     campaigns: [Campaign]!
+  }
+
+  input CampaignsFilter {
+    field: String!
+    values: [String]!
   }
 
   type Campaign {
