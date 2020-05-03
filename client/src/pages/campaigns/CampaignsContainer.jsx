@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { GET_CAMPAIGNS_BY_FILTER } from "../../gql/queries";
+import _ from 'lodash';
 
 import FilterPanel from "./filterPanel";
 import CampaignsTable from "./campaignsTable";
@@ -15,7 +16,7 @@ const CampaignsContainer = () => {
   if (error) return <p>ERROR</p>;
   if (!data) return <p>Not found</p>;
 
-  const dataForTable = data.campaignByFilter && data.campaignByFilter.map((campaign) => {
+  const dataForTable = _.get(data, "campaignByFilter", []).map((campaign) => {
     const {
       name,
       channels,

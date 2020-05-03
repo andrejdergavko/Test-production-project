@@ -45,17 +45,16 @@ function FilterPanel({ refetch }) {
   });
 
   return (
-    <form className={form}>
+    <div className={form}>
       <ThemeProvider theme={createTheme(lightThemePrimitives, overrides.theme)}>
         <Button
-          onClick={(event) => {
-            event.preventDefault();
+          onClick={() => {
             setChannel([]);
             setStatus([]);
           }}
           size={SIZE.compact}
           shape={SHAPE.pill}
-          isSelected={channel[0] || status[0] ? false : true}
+          isSelected={!(channel[0] || status[0])}
           overrides={overrides.button}
         >
           All
@@ -85,7 +84,7 @@ function FilterPanel({ refetch }) {
           overrides={overrides.select}
         />
       </ThemeProvider>
-    </form>
+    </div>
   );
 }
 
