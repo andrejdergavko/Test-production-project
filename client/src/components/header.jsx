@@ -29,19 +29,19 @@ export default () => {
       }}
     >
       <StyledNavigationList $align={ALIGN.left}>
-        <StyledNavigationItem>Uber</StyledNavigationItem>
+        <StyledNavigationItem>Test project</StyledNavigationItem>
       </StyledNavigationList>
       <StyledNavigationList $align={ALIGN.center} />
       <StyledNavigationList $align={ALIGN.right}>
         <StyledNavigationItem>
           <StyledLink href="#basic-link1">
-            Documentation
+            Button
           </StyledLink>
         </StyledNavigationItem>
       </StyledNavigationList>
       <StyledNavigationList $align={ALIGN.right} style={{marginRight: '25px'}}>
         <StyledNavigationItem>
-          <Button>Get started</Button>
+          <Button>Button</Button>
         </StyledNavigationItem>
       </StyledNavigationList>
     </HeaderNavigation>

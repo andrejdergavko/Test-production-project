@@ -20,6 +20,7 @@ export default ({ children }) => {
 
   const main = css({
     flexGrow: "1",
+    padding: '20px'
   });
 
   return (
