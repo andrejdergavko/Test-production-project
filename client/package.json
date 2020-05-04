@@ -12,6 +12,8 @@
     "apollo-client": "^2.6.3",
     "apollo-link-http": "^1.5.15",
     "baseui": "^9.71.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "graphql": "^14.4.2",
     "graphql-tag": "^2.10.1",
     "lodash": "^4.17.15",
@@ -21,6 +23,7 @@
     "react-emotion": "^9.2.12",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1",
+    "react-test-renderer": "^16.13.1",
     "styletron-engine-atomic": "^1.4.6",
     "styletron-react": "^5.2.7"
   },

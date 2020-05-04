@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompleteTag component: renders correctly 1`] = `
+<span
+  aria-disabled={null}
+  aria-label={null}
+  className=""
+  data-baseweb="tag"
+  onBlur={[Function]}
+  onClick={null}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  role={null}
+  tabIndex={null}
+>
+  <span
+    className=""
+    title="Inactive"
+  >
+    Inactive
+  </span>
+</span>
+`;

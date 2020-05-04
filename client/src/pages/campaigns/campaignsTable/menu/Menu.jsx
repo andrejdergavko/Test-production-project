@@ -54,7 +54,7 @@ function Menu() {
                   flexGrow: "1",
                   borderBottom: "1px solid #eee",
                 }),
-              }
+              },
             },
           },
         },
