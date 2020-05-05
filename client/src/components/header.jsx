@@ -18,11 +18,7 @@ export default () => {
             top: 0,
             backgroundColor: 'white',
             width: '100vw',
-            height: '64px',
-            paddingTop: '0',
-            paddingRight: '0',
-            paddingBottom: '0',
-            paddingLeft: '0',
+            padding: '5px 0 5px',
             zIndex: '1000'
           }
         }
