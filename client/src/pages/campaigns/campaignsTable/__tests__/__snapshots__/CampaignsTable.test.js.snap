@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CampaignsTable component: renders correctly 1`] = `
+<div
+  className=""
+  data-baseweb="table-semantic"
+>
+  <table
+    className=""
+  >
+    <thead
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <th
+          className=""
+        >
+          Campaign name
+        </th>
+        <th
+          className=""
+        >
+          Channels
+        </th>
+        <th
+          className=""
+        >
+          Created At
+        </th>
+        <th
+          className=""
+        >
+          Clicks
+        </th>
+        <th
+          className=""
+        >
+          Views
+        </th>
+        <th
+          className=""
+        >
+          Created By
+        </th>
+        <th
+          className=""
+        >
+          Status
+        </th>
+        <th
+          className=""
+        >
+          
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className=""
+    >
+      <tr
+        className=""
+      >
+        <td
+          className=""
+        />
+        <td
+          className=""
+        />
+        <td
+          className=""
+        />
+        <td
+          className=""
+        />
+        <td
+          className=""
+        />
+        <td
+          className=""
+        />
+        <td
+          className=""
+        />
+        <td
+          className=""
+        />
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

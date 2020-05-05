@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popover component: renders correctly 1`] = `
+<div
+  aria-controls={null}
+  aria-expanded="false"
+  aria-haspopup="true"
+  className=" "
+  onClick={[Function]}
+>
+  <img
+    alt="menu"
+    className=""
+    src="https://img.icons8.com/material-rounded/24/000000/menu-2.png"
+  />
+</div>
+`;

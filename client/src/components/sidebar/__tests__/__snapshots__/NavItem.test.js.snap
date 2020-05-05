@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavItem component: renders correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className=""
+  />
+  <div
+    className=""
+  />
+</div>
+`;
+
+exports[`renders correctly 1`] = `
+<div
+  className=""
+>
+  <div
+    className=""
+  />
+  <div
+    className=""
+  />
+</div>
+`;
