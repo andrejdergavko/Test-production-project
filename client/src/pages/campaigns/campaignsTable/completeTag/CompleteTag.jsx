@@ -1,7 +1,12 @@
+// @flow
 import React from "react";
 import { Tag } from "baseui/tag";
 
-function CompleteTag({ isActive }) {
+type CompleteTagT = {
+  isActive: boolean,
+};
+
+function CompleteTag({ isActive }: CompleteTagT) {
   return (
     <Tag
       closeable={false}
@@ -9,7 +14,7 @@ function CompleteTag({ isActive }) {
       overrides={{
         Root: {
           style: () => ({
-            marginLeft: "-7px"
+            marginLeft: "-7px",
           }),
         },
       }}

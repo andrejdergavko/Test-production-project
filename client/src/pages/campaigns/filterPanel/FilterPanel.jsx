@@ -1,3 +1,4 @@
+// @flow
 import React, { useState, useEffect } from "react";
 import { useStyletron } from "styletron-react";
 import { Button, SIZE, SHAPE } from "baseui/button";
@@ -7,10 +8,16 @@ import { ThemeProvider, createTheme, lightThemePrimitives } from "baseui";
 import { CHANNELS, STATUSES } from "../../../constants";
 import overrides from "./overrides";
 
-function FilterPanel({ refetch }) {
+import type { GetCampaingsByFilterQueryVariables } from "../types.js";
+
+type FilterPanelT = {
+  refetch: (variables: GetCampaingsByFilterQueryVariables) => void,
+};
+
+function FilterPanel({ refetch }: FilterPanelT) {
   const [channel, setChannel] = useState([]);
   const [status, setStatus] = useState([]);
-
+  console.log(channel, status);
   useEffect(() => {
     refetch({
       filter: getFilter(),
@@ -19,10 +26,10 @@ function FilterPanel({ refetch }) {
 
   const getFilter = () => {
     const selectedChannels = channel.map((item) => {
-      return item.id;
+      return String(item.id);
     });
     const selectedStatus = status.map((item) => {
-      return item.id;
+      return String(item.id);
     });
 
     return [
@@ -38,7 +45,7 @@ function FilterPanel({ refetch }) {
   };
 
   const [css] = useStyletron();
-  
+
   const form = css({
     marginBottom: "20px",
     display: "flex",

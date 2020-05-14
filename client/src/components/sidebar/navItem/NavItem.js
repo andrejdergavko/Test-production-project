@@ -1,7 +1,13 @@
-import React from "react";
+// @flow
+import * as React from "react";
 import { useStyletron } from "styletron-react";
 
-function NavItem({ label, iconComponent }) {
+type NavItemT = {
+  label: string,
+  iconComponent?: React.Node,
+};
+
+function NavItem({ label, iconComponent }: NavItemT) {
   const [css] = useStyletron();
 
   const navItem = css({
@@ -12,7 +18,7 @@ function NavItem({ label, iconComponent }) {
   const icon = css({
     width: "25px",
     height: "25px",
-    flexShrink: "0",
+    flexShrink: 0,
   });
 
   const text = css({

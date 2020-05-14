@@ -1,3 +1,4 @@
+// @flow
 import React, { useState } from "react";
 import { StatefulPopover, PLACEMENT } from "baseui/popover";
 import { useStyletron } from "styletron-react";

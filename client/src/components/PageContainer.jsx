@@ -1,10 +1,15 @@
-import React from "react";
+// @flow
+import * as React from "react";
 
 import Header from "./Header";
 import Sidebar from "./sidebar";
 import { useStyletron } from "styletron-react";
 
-export default ({ children }) => {
+type PageContainerT = {
+  children?: React.Node,
+};
+
+function PageContainer({ children }: PageContainerT) {
   const [css] = useStyletron();
 
   const pageContainer = css({
@@ -15,12 +20,12 @@ export default ({ children }) => {
 
   const wrapper = css({
     display: "flex",
-    flexGrow: "1",
+    flexGrow: 1,
   });
 
   const main = css({
-    flexGrow: "1",
-    padding: '20px'
+    flexGrow: 1,
+    padding: "20px",
   });
 
   return (
@@ -32,4 +37,6 @@ export default ({ children }) => {
       </div>
     </div>
   );
-};
+}
+
+export default PageContainer;
