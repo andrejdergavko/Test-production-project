@@ -17,7 +17,7 @@ type FilterPanelT = {
 function FilterPanel({ refetch }: FilterPanelT) {
   const [channel, setChannel] = useState([]);
   const [status, setStatus] = useState([]);
-  console.log(channel, status);
+  
   useEffect(() => {
     refetch({
       filter: getFilter(),
