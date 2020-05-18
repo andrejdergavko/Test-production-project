@@ -37,6 +37,8 @@ class CampaignAPI {
           return campaign.channels.some((item) => {
             return values.includes(item.name);
           });
+        } else if (field === "name") {
+          return campaign[field].toLowerCase().includes(String(values).toLowerCase());
         } else {
           return values.includes(String(campaign[field]));
         }
