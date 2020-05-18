@@ -1,9 +1,14 @@
+// @flow
 import React from "react";
 import { useStyletron } from "baseui";
 
 import { CHANNELS } from "../../../../constants";
 
-function Channels({ channels }) {
+type ChannelsT = {
+  channels?: ({ name: number })[],
+};
+
+function Channels({ channels }: ChannelsT) {
   const [css] = useStyletron();
   const icon = css({
     width: "17px",
@@ -13,6 +18,10 @@ function Channels({ channels }) {
   const iconWrapper = css({
     display: "flex",
   });
+
+  if (!channels || channels.length === 0) {
+    return <div>-</div>;
+  }
 
   channels.sort((a, b) => {
     return a.name > b.name ? 1 : -1;

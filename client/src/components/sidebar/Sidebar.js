@@ -1,3 +1,4 @@
+// @flow
 import * as React from "react";
 import { withRouter } from "react-router";
 import { Navigation } from "baseui/side-navigation";

@@ -1,4 +1,5 @@
-import React from "react";
+// @flow
+import * as React from "react";
 import { Table } from "baseui/table-semantic";
 
 const COLUMNS = [
@@ -12,7 +13,14 @@ const COLUMNS = [
   "",
 ];
 
-function CampaignsTable({ data, loading }) {
+type CampaignsTableRowT = (string | React.Node)[]
+
+type CampaignsTableT = {
+  data: CampaignsTableRowT[],
+  loading?: boolean,
+}
+
+function CampaignsTable({ data, loading }: CampaignsTableT) {
   if (loading) return <p>Loading.. </p>;
 
   return (

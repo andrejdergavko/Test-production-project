@@ -1,6 +1,12 @@
+// @flow
 import React from "react";
 
-const HomeSwg = ({ width = "100%", height = "100%" }) => (
+type HomeSwgT = {
+  width?: string,
+  height?: string,
+};
+
+const HomeSwg = ({ width = "100%", height = "100%" }: HomeSwgT) => (
   <svg
     width={width}
     height={height}

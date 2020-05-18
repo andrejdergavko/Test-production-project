@@ -1,6 +1,12 @@
+// @flow
 import React from "react";
 
-const LightningSwg = ({ width = "100%", height = "100%" }) => (
+type LightningSwgT = {
+  width?: string,
+  height?: string,
+};
+
+const LightningSwg = ({ width = "100%", height = "100%" }: LightningSwgT) => (
   <svg
     width={width}
     height={height}

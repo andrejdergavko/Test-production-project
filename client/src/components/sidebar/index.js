@@ -1,4 +1,2 @@
-// import Sidebar from "./Sidebar";
-
-// export default Sidebar;
+// @flow
 export { default } from './Sidebar';
