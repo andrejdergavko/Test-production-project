@@ -11,20 +11,20 @@ import overrides from "./overrides";
 import type { GetCampaingsByFilterQueryVariables } from "../types.js";
 
 type FilterPanelT = {
-  refetch: (variables: GetCampaingsByFilterQueryVariables) => void,
+  setChannelFilter: (a: string[]) => void,
+  setStatusFilter: (a: string[]) => void,
+  clearFilter: () => void,
 };
 
-function FilterPanel({ refetch }: FilterPanelT) {
+function FilterPanel({
+  setChannelFilter,
+  setStatusFilter,
+  clearFilter,
+}: FilterPanelT) {
   const [channel, setChannel] = useState([]);
   const [status, setStatus] = useState([]);
-  
-  useEffect(() => {
-    refetch({
-      filter: getFilter(),
-    });
-  }, [channel, status]);
 
-  const getFilter = () => {
+  useEffect(() => {
     const selectedChannels = channel.map((item) => {
       return String(item.id);
     });
@@ -32,17 +32,9 @@ function FilterPanel({ refetch }: FilterPanelT) {
       return String(item.id);
     });
 
-    return [
-      {
-        field: "channels",
-        values: selectedChannels,
-      },
-      {
-        field: "isActive",
-        values: selectedStatus,
-      },
-    ];
-  };
+    setChannelFilter(selectedChannels);
+    setStatusFilter(selectedStatus);
+  }, [channel, status]);
 
   const [css] = useStyletron();
 
@@ -58,6 +50,7 @@ function FilterPanel({ refetch }: FilterPanelT) {
           onClick={() => {
             setChannel([]);
             setStatus([]);
+            clearFilter();
           }}
           size={SIZE.compact}
           shape={SHAPE.pill}

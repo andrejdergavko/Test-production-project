@@ -1,6 +1,6 @@
 // @flow
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import { useQuery } from "@apollo/react-hooks";
 import { GET_CAMPAIGNS_BY_FILTER } from "../../gql/queries";
@@ -21,6 +21,35 @@ const CampaignsContainer = () => {
     GetCampaingsByFilterQuery,
     GetCampaingsByFilterQueryVariables
   >(GET_CAMPAIGNS_BY_FILTER);
+
+  const [channelFilter, setChannelFilter] = useState([]);
+  const [statusFilter, setStatusFilter] = useState([]);
+  const [nameFilter, setNameFilter] = useState([]);
+
+  useEffect(() => {
+    refetch({
+      filter: [
+        {
+          field: "channels",
+          values: channelFilter,
+        },
+        {
+          field: "isActive",
+          values: statusFilter,
+        },
+        {
+          field: "name",
+          values: nameFilter,
+        },
+      ],
+    });
+  }, [channelFilter, statusFilter, nameFilter]);
+
+  const clearFilter = () => {
+    setChannelFilter([]);
+    setStatusFilter([]);
+    setNameFilter([]);
+  };
 
   if (error) return <p>ERROR</p>;
   if (!data) return <p>Not found</p>;
@@ -50,7 +79,11 @@ const CampaignsContainer = () => {
 
   return (
     <>
-      <FilterPanel refetch={refetch} />
+      <FilterPanel
+        setChannelFilter={setChannelFilter}
+        setStatusFilter={setStatusFilter}
+        clearFilter={clearFilter}
+      />
       <CampaignsTable loading={loading} data={dataForTable} />
     </>
   );
