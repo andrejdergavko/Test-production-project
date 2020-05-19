@@ -1,9 +1,20 @@
 // @flow
 import React from "react";
 import { useStyletron } from "baseui";
+import { Block } from "baseui/block";
 import SearchInput from "./searchInput";
 
-function SearchPanel({ nameFilter, setNameFilter }) {
+type SearchPanelT = {
+  nameFilter: string[],
+  setNameFilter: (a: string[]) => void,
+  numberOfFound: number,
+};
+
+function SearchPanel({
+  nameFilter,
+  setNameFilter,
+  numberOfFound,
+}: SearchPanelT) {
   const [css] = useStyletron();
   const searchPanel = css({
     marginBottom: "20px",
@@ -13,7 +24,7 @@ function SearchPanel({ nameFilter, setNameFilter }) {
 
   return (
     <div className={searchPanel}>
-      <div>10 campaigns</div>
+      <Block font="font750">{numberOfFound} campaigns</Block>
       <SearchInput nameFilter={nameFilter} setNameFilter={setNameFilter} />
     </div>
   );

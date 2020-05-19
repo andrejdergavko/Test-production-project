@@ -11,6 +11,7 @@ import overrides from "./overrides";
 type FilterPanelT = {
   setChannelFilter: (a: string[]) => void,
   setStatusFilter: (a: string[]) => void,
+  nameFilter: string[],
   clearFilter: () => void,
 };
 

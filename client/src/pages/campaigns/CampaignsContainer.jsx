@@ -81,7 +81,7 @@ const CampaignsContainer = () => {
 
   return (
     <>
-      <SearchPanel nameFilter={nameFilter} setNameFilter={setNameFilter} />
+      <SearchPanel  nameFilter={nameFilter} setNameFilter={setNameFilter} numberOfFound={dataForTable.length}/>
       <FilterPanel
         setChannelFilter={setChannelFilter}
         setStatusFilter={setStatusFilter}
