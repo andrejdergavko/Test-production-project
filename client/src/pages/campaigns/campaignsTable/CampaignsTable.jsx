@@ -4,6 +4,7 @@ import { Table } from "baseui/table-semantic";
 import { useStyletron } from "styletron-react";
 
 import Spinner from "./spinner";
+import styles from './styles';
 
 const COLUMNS = [
   "Campaign name",
@@ -36,37 +37,7 @@ function CampaignsTable({ data, loading }: CampaignsTableT) {
       <Table
         columns={COLUMNS}
         data={data}
-        overrides={{
-          Root: {
-            style: () => {
-              return { border: "#f6f6f6 solid 2px" };
-            },
-          },
-          TableHeadCell: {
-            style: () => {
-              return {
-                backgroundColor: "#f6f6f6",
-                "::before": { borderLeftStyle: "none" },
-                "::after": { backgroundImage: "none" },
-              };
-            },
-          },
-          TableBodyRow: {
-            style: () => {
-              return {
-                outline: "#f6f6f6 solid 1px",
-                backgroundColor: "#fff",
-              };
-            },
-          },
-          TableBodyCell: {
-            style: () => {
-              return {
-                verticalAlign: "middle",
-              };
-            },
-          },
-        }}
+        overrides={styles.table}
       />
     </div>
   );
