@@ -13,7 +13,6 @@ const SearchInput = ({ nameFilter, setNameFilter }: SearchInputT) => {
     <Input
       value={nameFilter[0]}
       onChange={(e) => {
-        console.log(e.target.value);
         setNameFilter([e.target.value]);
       }}
       placeholder="Search compaigns by name"

@@ -11,15 +11,11 @@ import overrides from "./overrides";
 type FilterPanelT = {
   setChannelFilter: (a: string[]) => void,
   setStatusFilter: (a: string[]) => void,
-  nameFilter: string[],
-  clearFilter: () => void,
 };
 
 function FilterPanel({
   setChannelFilter,
   setStatusFilter,
-  nameFilter,
-  clearFilter,
 }: FilterPanelT) {
   const [channel, setChannel] = useState([]);
   const [status, setStatus] = useState([]);
@@ -50,11 +46,10 @@ function FilterPanel({
           onClick={() => {
             setChannel([]);
             setStatus([]);
-            clearFilter();
           }}
           size={SIZE.compact}
           shape={SHAPE.pill}
-          isSelected={!(channel[0] || status[0] || nameFilter[0])}
+          isSelected={!(channel[0] || status[0])}
           overrides={overrides.button}
         >
           All

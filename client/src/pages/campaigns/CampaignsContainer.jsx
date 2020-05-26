@@ -25,8 +25,7 @@ const CampaignsContainer = () => {
 
   const [channelFilter, setChannelFilter] = useState([]);
   const [statusFilter, setStatusFilter] = useState([]);
-  const [nameFilter, setNameFilter] = useState(['']);
-  console.log(channelFilter, statusFilter, nameFilter)
+  const [nameFilter, setNameFilter] = useState([]);
 
   useEffect(() => {
     refetch({
@@ -46,12 +45,6 @@ const CampaignsContainer = () => {
       ],
     });
   }, [channelFilter, statusFilter, nameFilter]);
-
-  const clearFilter = () => {
-    setChannelFilter([]);
-    setStatusFilter([]);
-    setNameFilter(['']);
-  };
 
   if (error) return <p>ERROR</p>;
   if (!data) return <p>Not found</p>;
@@ -85,8 +78,6 @@ const CampaignsContainer = () => {
       <FilterPanel
         setChannelFilter={setChannelFilter}
         setStatusFilter={setStatusFilter}
-        nameFilter={nameFilter}
-        clearFilter={clearFilter}
       />
       <CampaignsTable loading={loading} data={dataForTable} />
     </>
