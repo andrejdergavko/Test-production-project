@@ -8,18 +8,14 @@ import { ThemeProvider, createTheme, lightThemePrimitives } from "baseui";
 import { CHANNELS, STATUSES } from "../../../constants";
 import overrides from "./overrides";
 
-import type { GetCampaingsByFilterQueryVariables } from "../types.js";
-
 type FilterPanelT = {
   setChannelFilter: (a: string[]) => void,
   setStatusFilter: (a: string[]) => void,
-  clearFilter: () => void,
 };
 
 function FilterPanel({
   setChannelFilter,
   setStatusFilter,
-  clearFilter,
 }: FilterPanelT) {
   const [channel, setChannel] = useState([]);
   const [status, setStatus] = useState([]);
@@ -50,7 +46,6 @@ function FilterPanel({
           onClick={() => {
             setChannel([]);
             setStatus([]);
-            clearFilter();
           }}
           size={SIZE.compact}
           shape={SHAPE.pill}

@@ -1,20 +1,21 @@
 // @flow
-
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
 import { useQuery } from "@apollo/react-hooks";
 import { GET_CAMPAIGNS_BY_FILTER } from "../../gql/queries";
-import type {
-  GetCampaingsByFilterQuery,
-  GetCampaingsByFilterQueryVariables,
-} from "./types.js";
 
 import FilterPanel from "./filterPanel";
+import SearchPanel from "./searchPanel";
 import CampaignsTable from "./campaignsTable";
 import CompleteTag from "./campaignsTable/completeTag";
 import Channels from "./campaignsTable/channels";
 import Popover from "./campaignsTable/popover";
 import { numberWithSeparator, convertTimestampToDate } from "../../utils/utils";
+
+import type {
+  GetCampaingsByFilterQuery,
+  GetCampaingsByFilterQueryVariables,
+} from "./types.js";
 
 const CampaignsContainer = () => {
   const { data, loading, error, refetch } = useQuery<
@@ -45,12 +46,6 @@ const CampaignsContainer = () => {
     });
   }, [channelFilter, statusFilter, nameFilter]);
 
-  const clearFilter = () => {
-    setChannelFilter([]);
-    setStatusFilter([]);
-    setNameFilter([]);
-  };
-
   if (error) return <p>ERROR</p>;
   if (!data) return <p>Not found</p>;
 
@@ -79,10 +74,10 @@ const CampaignsContainer = () => {
 
   return (
     <>
+      <SearchPanel  nameFilter={nameFilter} setNameFilter={setNameFilter} numberOfFound={dataForTable.length}/>
       <FilterPanel
         setChannelFilter={setChannelFilter}
         setStatusFilter={setStatusFilter}
-        clearFilter={clearFilter}
       />
       <CampaignsTable loading={loading} data={dataForTable} />
     </>
