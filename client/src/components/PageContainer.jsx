@@ -1,7 +1,7 @@
 // @flow
 import * as React from "react";
 
-import Header from "./Header";
+import Header from "./header";
 import Sidebar from "./sidebar";
 import { useStyletron } from "styletron-react";
 

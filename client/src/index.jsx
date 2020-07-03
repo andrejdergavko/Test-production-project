@@ -17,7 +17,8 @@ const engine = new Styletron();
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: "http://localhost:4000/"
+  // uri: "http://localhost:4000/"
+  uri: "https://server-test-produclion.herokuapp.com/"
 });
 
 const client = new ApolloClient({
